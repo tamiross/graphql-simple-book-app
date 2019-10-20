@@ -2,9 +2,12 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const app = express();
 const port = '5000'
+
+// Allow CORS
+app.use(cors())
 
 // Connect to MongoDB Atlas database
 const uri = 'mongodb+srv://test1:123123123@cluster0-rbmru.mongodb.net/test?retryWrites=true&w=majority' // TODO: MOve to config module
