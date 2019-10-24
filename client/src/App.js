@@ -1,8 +1,8 @@
 import React from 'react';
 import ApolloClient from 'apollo-boost';
-import { ApolloProvider  } from '@apollo/react-hooks';
-
+import { ApolloProvider } from '@apollo/react-hooks';
 // Components
+import Header from './components/header/header';
 import BookList from './components/book_list';
 import AddBook from './components/add_book';
 
@@ -14,11 +14,12 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider  client={client}>
+    <ApolloProvider client={client}>
       <div className="App">
-        <h1>Books List</h1>
-        <BookList />
-        <AddBook />
+          <Header />
+          <h1>Books List</h1>
+          <BookList />
+          <AddBook />
       </div>
     </ApolloProvider >
   );
