@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-apollo';
-import { GET_BOOKS_QUERY } from '../queries/queries';
-import BookDetails from './book_details';
+import { GET_BOOKS_QUERY } from 'queries/queries';
+import BookDetails from 'components/book_details/book_details';
 
 const BookList = () => {
     const { loading, data } = useQuery(GET_BOOKS_QUERY)
@@ -14,7 +14,11 @@ const BookList = () => {
 
     const renderBooks = books => {
         return books.map(book => {
-            return <li key={book.id} onClick={e => onBookClick(e, book.id)}>{book.name}</li>
+            const props = {
+                key: book.id,
+                onClick: e => onBookClick(e, book.id)
+            }
+            return <li {...props}>{book.name}</li>
         })
     }
 

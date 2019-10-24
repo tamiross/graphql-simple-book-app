@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery, useMutation } from 'react-apollo';
-import { GET_AUTHORS, ADD_BOOK } from '../queries/queries';
+import { GET_AUTHORS, ADD_BOOK } from 'queries/queries';
 
 
 const onBookNameInputChange = (e, cb) => {

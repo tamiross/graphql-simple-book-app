@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
-import { GET_BOOK_DETAILS_QUERY } from '../queries/queries';
+import { GET_BOOK_DETAILS_QUERY } from 'queries/queries';
 
 // Using Hooks...
 const BookDetails = ({ id }) => {
