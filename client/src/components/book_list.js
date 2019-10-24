@@ -3,8 +3,6 @@ import { useQuery } from 'react-apollo';
 import { GET_BOOKS_QUERY } from '../queries/queries';
 import BookDetails from './book_details';
 
-
-
 const BookList = () => {
     const { loading, data } = useQuery(GET_BOOKS_QUERY)
     const [bookId, setBookId] = useState(0);

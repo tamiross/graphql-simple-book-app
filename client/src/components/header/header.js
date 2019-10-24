@@ -1,5 +1,5 @@
 import React from 'react';
-import { styles, BaseStyle } from './styles';
+import { BaseStyle } from './styles';
 
 const Header = props => {
     return (
