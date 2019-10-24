@@ -9,6 +9,9 @@ const GET_BOOKS_QUERY = gql`
         id
         name
         genre
+        author {
+            name
+        }
     }
 }
 `

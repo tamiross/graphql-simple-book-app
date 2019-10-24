@@ -37,10 +37,21 @@ export const useStyles = makeStyles(theme => ({
 }));
 
 export const Title = styled.div({
+    fontWeight: 600,
     margin: 0
+})
+
+export const Subtitle = styled.div({
+    fontSize: 12,
+    color: '#888'
 })
 
 export const Content = styled.div({
     display: 'flex',
     alignItems: 'center'
+})
+
+export const Header = styled.div({
+    display: 'flex',
+    flexDirection: 'column'
 })
