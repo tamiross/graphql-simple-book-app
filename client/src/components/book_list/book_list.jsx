@@ -5,6 +5,8 @@ import BookDetails from 'components/book_details/book_details';
 import { useStyles } from './styles';
 import BookListItem from 'components/book_list_item/book_list_item';
 import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 const onDeleteClick = e => {
     e.preventDefault();
@@ -24,19 +26,17 @@ const BookList = () => {
 
     const renderBooks = books => {
         return books.map(book => {
-            console.log('book', book)
             const props = {
-                key: book.id,
                 name: book.name,
                 author: book.author,
                 onClick: e => onBookClick(e, book.id),
                 onDeleteClick: onDeleteClick
             }
-            return(
-                <Grid item xs={12} sm={6} md={4} lg={3}>
+            return (
+                <Grid key={book.id} item xs={12} sm={6} md={4} lg={3}>
                     <BookListItem {...props} />
                 </Grid>
-            ) 
+            )
         })
     }
 
@@ -53,6 +53,9 @@ const BookList = () => {
                 </Grid>
             </ul>
             <BookDetails id={bookId} />
+            <Fab color="primary" aria-label="add" className={classes.fab}>
+                <AddIcon />
+            </Fab>
         </>
     )
 }

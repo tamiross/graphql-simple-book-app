@@ -1,12 +1,22 @@
 import React from 'react';
 import { useStyles, Title, Content, Subtitle, Header } from './styles';
 import Paper from '@material-ui/core/Paper';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const BookListItem = (props) => {
-    console.log('props', props)
     const classes = useStyles();
+
+    const renderEditIcon = () => {
+
+        return (
+            <IconButton className={classes.editButton}>
+                <EditIcon />
+            </IconButton>
+        )
+    }
 
     const renderDeleteIcon = () => {
         const iconProps = {
@@ -14,7 +24,11 @@ const BookListItem = (props) => {
             onClick: props.onDeleteItem
         }
 
-        return <DeleteForeverIcon {...iconProps} />
+        return (
+            <IconButton {...iconProps}>
+                <DeleteIcon />
+            </IconButton>
+        )
     }
 
     return (
@@ -27,7 +41,10 @@ const BookListItem = (props) => {
                         <Subtitle>{props.author.name}</Subtitle>
                     </Header>
                 </Content>
-                {renderDeleteIcon()}
+                <div className="action-buttons">
+                    {renderEditIcon()}
+                    {renderDeleteIcon()}
+                </div>
             </Paper>
         </li>
     )

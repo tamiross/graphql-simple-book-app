@@ -20,14 +20,17 @@ export const useStyles = makeStyles(theme => ({
     },
 
     deleteIcon: {
-        cursor: 'pointer',
-        transition: '0.3s',
-        padding: 4,
+        margin: theme.spacing(1),
+        transition: '0.5s',
         '&:hover': {
-            background: '#d3d3d3',
-            borderRadius: '50%',
             color: 'red',
-            transition: '0.3s'
+            transition: '0.5s'
+        }
+    },
+
+    editButton: {
+        '&:hover': {
+            color: '#1976D2'
         }
     },
 
