@@ -27,6 +27,7 @@ const BookList = () => {
     const renderBooks = books => {
         return books.map(book => {
             const props = {
+                id: book.id,
                 name: book.name,
                 author: book.author,
                 onClick: e => onBookClick(e, book.id),

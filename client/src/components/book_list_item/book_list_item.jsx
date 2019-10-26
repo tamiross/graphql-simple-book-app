@@ -5,12 +5,14 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import { GET_BOOKS_QUERY, DELETE_BOOK_MUTATION } from 'queries/queries';
+import { useMutation } from 'react-apollo';
 
 const BookListItem = (props) => {
     const classes = useStyles();
+    const [deleteBook] = useMutation(DELETE_BOOK_MUTATION)
 
     const renderEditIcon = () => {
-
         return (
             <IconButton className={classes.editButton}>
                 <EditIcon />
@@ -21,7 +23,16 @@ const BookListItem = (props) => {
     const renderDeleteIcon = () => {
         const iconProps = {
             className: classes.deleteIcon,
-            onClick: props.onDeleteItem
+            onClick: () => {
+                const response = deleteBook({
+                    variables: {
+                        id: props.id
+                    },
+                    refetchQueries: [
+                        { query: GET_BOOKS_QUERY }
+                    ]
+                });
+            }
         }
 
         return (

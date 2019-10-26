@@ -53,11 +53,19 @@ const ADD_BOOK_MUTATION = gql`
         }
     }
 `
+const DELETE_BOOK_MUTATION = gql`
+mutation deleteBook($id: ID!) {
+    deleteBook(id: $id) {
+        id
+    }
+}
+`
 
 export {
     GET_AUTHORS_QUERY,
     GET_BOOKS_QUERY,
     GET_BOOK_DETAILS_QUERY,
-    ADD_BOOK_MUTATION
+    ADD_BOOK_MUTATION,
+    DELETE_BOOK_MUTATION
 }
 

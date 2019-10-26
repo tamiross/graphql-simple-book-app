@@ -11,7 +11,11 @@ import { Container } from '@material-ui/core';
 // Apollo client setup
 const uri = 'http://localhost:5000/graphql'; // TODO: Move to config file
 const client = new ApolloClient({
-  uri
+  uri,
+  onError: ({ networkError, graphQLErrors }) => {
+    console.log('graphQLErrors:\n ----', graphQLErrors)
+    console.log('>> networkError:\n ---- ', networkError)
+  }
 })
 
 function App() {
