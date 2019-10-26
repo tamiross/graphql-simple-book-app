@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 // Components
@@ -7,28 +7,43 @@ import { Button } from 'components/button/button';
 import BookList from 'components/book_list/book_list';
 import AddBook from 'components/add_book/add_book';
 import { Container } from '@material-ui/core';
+import Modal from 'components/modal/modal';
 
 // Apollo client setup
 const uri = 'http://localhost:5000/graphql'; // TODO: Move to config file
 const client = new ApolloClient({
   uri,
   onError: ({ networkError, graphQLErrors }) => {
-    console.log('graphQLErrors:\n ----', graphQLErrors)
-    console.log('>> networkError:\n ---- ', networkError)
+    console.log('graphQLErrors:', graphQLErrors)
+    console.log('>> networkError:', networkError)
   }
 })
 
+
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const renderModal = () => {
+    if (!isModalOpen) 
+      return null;
+
+    return (
+      <Modal title='Add Book' onClose={() => setIsModalOpen(false)}>
+        <AddBook />
+      </Modal>
+    )
+  }
+
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <Header />
         <main>
           <Container>
-            <h1>Books List</h1>
+            <h1>B List</h1>
+            <button onClick={() => setIsModalOpen(true)}>OPEN MODLA</button>
+            {renderModal()}
             <BookList />
-            <AddBook />
-            <Button label="TEST" />
           </Container>
         </main>
       </div>
