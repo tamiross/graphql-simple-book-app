@@ -13,7 +13,8 @@ app.use(cors())
 const uri = 'mongodb+srv://test1:123123123@cluster0-rbmru.mongodb.net/test?retryWrites=true&w=majority' // TODO: MOve to config module
 mongoose.connect(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 })
 
 mongoose.connection.once('open', () => {

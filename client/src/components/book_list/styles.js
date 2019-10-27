@@ -10,3 +10,11 @@ export const useStyles = makeStyles(theme => ({
       padding: 0
     }
   }));
+
+  export const styles = {
+    addIcon: {
+      position: 'fixed',
+      bottom: 24,
+      right: 24
+    }
+  }

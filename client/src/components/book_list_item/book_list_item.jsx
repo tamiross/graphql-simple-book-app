@@ -24,7 +24,7 @@ const BookListItem = (props) => {
         const iconProps = {
             className: classes.deleteIcon,
             onClick: () => {
-                const response = deleteBook({
+                deleteBook({
                     variables: {
                         id: props.id
                     },
